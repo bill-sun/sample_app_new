@@ -4,7 +4,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3' , :group => [:development, :test]
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
+
 
 	group :development, :test do
 	  gem 'rspec-rails', '~> 3.0'
@@ -17,6 +22,10 @@ gem 'sqlite3'
 
     gem 'spork' #, '0.8.4'
     gem 'spork-rails' # for Rails4.0 and ruby 2.23
+
+    group :development, :test do
+      gem 'capybara'
+    end    
     
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
